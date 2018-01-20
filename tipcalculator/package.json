@@ -1,0 +1,21 @@
+{
+  "name": "caloriecounter",
+  "version": "1.0.0",
+  "description": "Calorie Counter App",
+  "scripts": {
+    "start": "webpack-dev-server --open"
+  },
+  "author": "James Moore",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.10.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "hyperscript-helpers": "^3.0.3",
+    "ramda": "^0.25.0",
+    "virtual-dom": "^2.1.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
