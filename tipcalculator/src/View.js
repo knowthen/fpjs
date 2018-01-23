@@ -81,7 +81,6 @@ function view(dispatch, model) {
       dispatch(tipPercentInputMsg(e.target.value)),
     ),
     calculatedAmounts(toMoney(tip), toMoney(total)),
-    pre(JSON.stringify(model, null, 2)),
   ]);
 }
 
