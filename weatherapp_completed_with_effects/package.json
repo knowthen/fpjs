@@ -1,0 +1,26 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "Weather App",
+  "scripts": {
+    "start": "webpack-dev-server --open"
+  },
+  "author": "James Moore",
+  "license": "MIT",
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "hyperscript-helpers": "^3.0.3",
+    "ramda": "^0.25.0",
+    "regenerator-transform": "^0.12.1",
+    "virtual-dom": "^2.1.1",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}

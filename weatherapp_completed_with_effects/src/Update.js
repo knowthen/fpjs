@@ -65,7 +65,7 @@ function update(msg, model) {
   switch (msg.type) {
     case MSGS.LOCATION_INPUT: {
       const { location } = msg;
-      return [{ ...model, location }];
+      return { ...model, location };
     }
     case MSGS.ADD_LOCATION: {
       const { location } = model;
@@ -94,32 +94,29 @@ function update(msg, model) {
         high: Math.round(temp_max),
       };
       const updatedLocations = R.prepend(newLocation, locations);
-      return [
-        {
-          ...model,
-          locations: updatedLocations,
-          location: '',
-          nextId: nextId + 1,
-          error: null,
-        },
-      ];
+      return {
+        ...model,
+        locations: updatedLocations,
+        location: '',
+        nextId: nextId + 1,
+        error: null,
+      };
     }
     case MSGS.HTTP_ERROR: {
       const { error } = msg;
-      console.log(JSON.stringify(error));
-      return [{ ...model, error: error.message }];
+      return { ...model, error: error.message };
     }
     case MSGS.REMOVE_LOCATION: {
       const { id } = msg;
       const { locations } = model;
       const updatedLocations = R.reject(R.propEq('id', id), locations);
-      return [{ ...model, locations: updatedLocations }];
+      return { ...model, locations: updatedLocations };
     }
     case MSGS.CLEAR_ERROR: {
-      return [{ ...model, error: null }];
+      return { ...model, error: null };
     }
   }
-  return [model];
+  return model;
 }
 
 export default update;
