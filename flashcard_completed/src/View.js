@@ -113,31 +113,37 @@ function editAnswer(dispatch, card) {
 
 function viewCard(dispatch, card) {
   return div(
-    {
-      className: 'w-30 pa2 bg-light-yellow shadow-1 mv2 relative pb5',
-    },
-    [
-      question(dispatch, card),
-      answer(dispatch, card),
-      gradeButtons(dispatch, card),
-      remove(dispatch, card),
-    ],
+    { className: 'w-third pa2' },
+    div(
+      {
+        className: 'w-100 pa2 bg-light-yellow shadow-1 mv2 relative pb5',
+      },
+      [
+        question(dispatch, card),
+        answer(dispatch, card),
+        gradeButtons(dispatch, card),
+        remove(dispatch, card),
+      ],
+    ),
   );
 }
 
 function editCard(dispatch, card) {
-  return div({ className: 'w-30 pa2 bg-light-yellow mv2 shadow-1 relative' }, [
-    editQuestion(dispatch, card),
-    editAnswer(dispatch, card),
-    button(
-      {
-        className: 'f4 ph3 pv2 br1 bg-gray bn white mv2',
-        onclick: () => dispatch(saveMsg(card.id)),
-      },
-      'Save',
-    ),
-    remove(dispatch, card),
-  ]);
+  return div(
+    { className: 'w-third pa2' },
+    div({ className: 'w-100 pa2 bg-light-yellow mv2 shadow-1 relative' }, [
+      editQuestion(dispatch, card),
+      editAnswer(dispatch, card),
+      button(
+        {
+          className: 'f4 ph3 pv2 br1 bg-gray bn white mv2',
+          onclick: () => dispatch(saveMsg(card.id)),
+        },
+        'Save',
+      ),
+      remove(dispatch, card),
+    ]),
+  );
 }
 
 const card = R.curry((dispatch, card) => {
@@ -161,7 +167,8 @@ function view(dispatch, model) {
         [i({ className: 'fa fa-plus ph1' }), 'Add Flashcard'],
       ),
     ),
-    div({ className: 'flex flex-wrap justify-between' }, cards),
+    div({ className: 'flex flex-wrap nl2 nr2' }, cards),
+    pre(JSON.stringify(model, null, 2)),
   ]);
 }
 

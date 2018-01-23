@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Flash Card App",
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "design": "serve ./design"
+    "start": "webpack-dev-server --open"
   },
   "author": "James Moore",
   "license": "MIT",
@@ -18,8 +17,5 @@
     "ramda": "^0.25.0",
     "virtual-dom": "^2.1.1",
     "webpack-dev-server": "^2.9.4"
-  },
-  "dependencies": {
-    "serve": "^6.4.8"
   }
 }

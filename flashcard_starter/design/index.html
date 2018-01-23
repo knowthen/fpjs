@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Counter App</title>
+  <title>Flashcard Study</title>
   <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
@@ -16,66 +16,71 @@
         <button class="pa2 br1 mv2 bg-green bn white">
           <i class="fa fa-plus ph1"></i>Add Flashcard</button>
       </div>
-      <!-- Add / Edit Flashcard HTML / CSS Start -->
-      <div class="flex flex-wrap justify-between">
-        <div class="w-30 pa2 bg-light-yellow mv2 shadow-1 relative">
-          <div class="">
-            <div class="b f6 mv1">Question</div>
-            <textarea class="w-100 bg-washed-yellow outline-0"></textarea>
-          </div>
-          <div class="">
-            <div class="b f6 mv1">Answer</div>
-            <textarea class="w-100 bg-washed-yellow outline-0"></textarea>
-          </div>
-          <button class="f4 ph3 pv2 br1 bg-gray bn white mv2">Save</button>
-          <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
-        </div>
-        <!-- Add / Edit Flashcard HTML / CSS End -->
-        <!-- Show Answer HTML / CSS Start -->
-        <div class="w-30 pa2 bg-light-yellow shadow-1 mv2 relative pb5">
-          <div class="">
-            <div class="b f6 mv1 underline">Question</div>
-            <div class="pointer">What is partial application?</div>
-          </div>
-          <div>
-            <div class="b f6 mv1 underline">Answer</div>
-            <div class="pointer">It's when a function is called with less than...</div>
-          </div>
-          <div class="absolute bottom-0 left-0 w-100 ph2">
-            <div class="mv2 flex justify-between">
-              <button class="f4 ph3 pv2 bg-red bn white br1">Bad</button>
-              <button class="f4 ph3 pv2 bg-blue bn white br1">Good</button>
-              <button class="f4 ph3 pv2 bg-dark-green bn white br1">Great</button>
+      <div class="flex flex-wrap nl2 nr2">
+        <div class="w-third pa2">
+          <div class="w-100 pa2 bg-light-yellow shadow-1 mv2 relative pb5">
+            <div class="">
+              <div class="b f6 mv1 underline">Question</div>
+              <div class="pointer">What is a pure function?</div>
             </div>
+            <div>
+              <div class="b f6 mv1 underline">Answer</div>
+              <div class="pointer">It's a function that ...</div>
+            </div>
+            <div class="absolute bottom-0 left-0 w-100 ph2">
+              <div class="mv2 flex justify-between">
+                <button class="f4 ph3 pv2 bg-red bn white br1">Bad</button>
+                <button class="f4 ph3 pv2 bg-blue bn white br1">Good</button>
+                <button class="f4 ph3 pv2 bg-dark-green bn white br1">Great</button>
+              </div>
+            </div>
+            <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
           </div>
-          <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
         </div>
-        <!-- Show Answer HTML / CSS End -->
-        <!-- Answer Hidden Card HTML / CSS START -->
-        <div class="w-30 pa2 bg-light-yellow shadow-1 mv2 relative pb5">
-          <div class="">
-            <div class="b f6 mv1 underline">Question</div>
-            <div class="pointer">What is immutable data?</div>
+        <div class="w-third pa2">
+          <div class="w-100 pa2 bg-light-yellow mv2 shadow-1 relative">
+            <div class="">
+              <div class="b f6 mv1">Question</div>
+              <textarea class="w-100 bg-washed-yellow outline-0"></textarea>
+            </div>
+            <div class="">
+              <div class="b f6 mv1">Answer</div>
+              <textarea class="w-100 bg-washed-yellow outline-0"></textarea>
+            </div>
+            <button class="f4 ph3 pv2 br1 bg-gray bn white mv2">Save</button>
+            <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
           </div>
-          <div>
-            <a class="f6 underline link pointer">Show Answer</a>
-          </div>
-          <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
         </div>
-        <!-- Answer Hidden Card HTML / CSS END-->
-        <div class="w-30 pa2 bg-light-yellow shadow-1 mv2 relative pb5">
-          <div class="">
-            <div class="b f6 mv1 underline">Question</div>
-            <div class="pointer">What is a pure function?</div>
+        <div class="w-third pa2">
+          <div class="w-100 pa2 bg-light-yellow shadow-1 mv2 relative pb5">
+            <div class="">
+              <div class="b f6 mv1 underline">Question</div>
+              <div class="pointer">What is partial application?</div>
+            </div>
+            <div>
+              <a class="f6 underline link pointer">Show Answer</a>
+            </div>
+            <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
           </div>
-          <div>
-            <a class="f6 underline link pointer">Show Answer</a>
+        </div>
+        <div class="w-third pa2">
+          <div class="w-100 pa2 bg-light-yellow shadow-1 mv2 relative pb5">
+            <div class="">
+              <div class="b f6 mv1 underline">Question</div>
+              <div class="pointer">What is partial application?</div>
+            </div>
+            <div>
+              <a class="f6 underline link pointer">Show Answer</a>
+            </div>
+            <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
           </div>
-          <i class="absolute top-0 right-0 fa fa-remove fa-fw black-50 pointer"></i>
         </div>
       </div>
     </div>
   </div>
+  <script src="bundle.js"></script>
+
+
 </body>
 
 </html>
