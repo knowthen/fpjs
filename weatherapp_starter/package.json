@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Weather App",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "design": "serve ./design"
   },
   "author": "James Moore",
   "license": "MIT",
@@ -21,6 +22,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "serve": "^6.4.9"
   }
 }
