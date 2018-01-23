@@ -57,9 +57,9 @@ function remove(dispatch, card) {
 
 function question(dispatch, card) {
   return div({ className: '' }, [
-    div({ className: 'b f6 mv1 underline' }, 'Question'),
+    div({ className: 'b f6 mv1 underline ph1' }, 'Question'),
     div(
-      { className: 'pointer', onclick: () => dispatch(editCardMsg(card.id)) },
+      { className: 'pointer  hover-bg-black-10  bg-animate pv2 ph1', onclick: () => dispatch(editCardMsg(card.id)) },
       card.question,
     ),
   ]);
@@ -69,7 +69,7 @@ function editQuestion(dispatch, card) {
   return div({ className: '' }, [
     div({ className: 'b f6 mv1' }, 'Question'),
     textarea({
-      className: 'w-100 bg-washed-yellow outline-0',
+      className: 'w-100 bg-washed-yellow outline-0 h4',
       value: card.question,
       oninput: e => dispatch(questionInputMsg(card.id, e.target.value)),
     }),
@@ -80,10 +80,10 @@ function answer(dispatch, card) {
   const { showAnswer } = card;
   return showAnswer
     ? div([
-        div({ className: 'b f6 mv1 underline' }, 'Answer'),
+        div({ className: 'b f6 mv1 ph1 underline' }, 'Answer'),
         div(
           {
-            className: 'pointer',
+            className: 'pointer hover-bg-black-10 bg-animate pv2 ph1',
             onclick: () => dispatch(editCardMsg(card.id)),
           },
           card.answer,
@@ -104,7 +104,7 @@ function editAnswer(dispatch, card) {
   return div({ className: '' }, [
     div({ className: 'b f6 mv1' }, 'Answer'),
     textarea({
-      className: 'w-100 bg-washed-yellow outline-0',
+      className: 'w-100 bg-washed-yellow outline-0 h4',
       value: card.answer,
       oninput: e => dispatch(answerInputMsg(card.id, e.target.value)),
     }),
@@ -116,7 +116,7 @@ function viewCard(dispatch, card) {
     { className: 'w-third pa2' },
     div(
       {
-        className: 'w-100 pa2 bg-light-yellow shadow-1 mv2 relative pb5',
+        className: 'w-100 h-100 pa2 bg-light-yellow shadow-1 mv2 relative pb5',
       },
       [
         question(dispatch, card),
@@ -131,7 +131,7 @@ function viewCard(dispatch, card) {
 function editCard(dispatch, card) {
   return div(
     { className: 'w-third pa2' },
-    div({ className: 'w-100 pa2 bg-light-yellow mv2 shadow-1 relative' }, [
+    div({ className: 'w-100 h-100 pa2 bg-light-yellow mv2 shadow-1 relative' }, [
       editQuestion(dispatch, card),
       editAnswer(dispatch, card),
       button(
@@ -152,10 +152,10 @@ const card = R.curry((dispatch, card) => {
 });
 
 function view(dispatch, model) {
-  const cards = R.pipe(
-    R.sortWith([R.ascend(R.prop('rank')), R.descend(R.prop('id'))]),
-    R.map(card(dispatch)),
-  )(model.cards);
+  const cards = R.map(
+    card(dispatch), 
+    model.cards
+  );
   return div({ className: 'mw8 center' }, [
     h1({ className: 'f2 pv2 bb' }, ['Flashcard Study']),
     div(
@@ -168,7 +168,7 @@ function view(dispatch, model) {
       ),
     ),
     div({ className: 'flex flex-wrap nl2 nr2' }, cards),
-    pre(JSON.stringify(model, null, 2)),
+    // pre({ className: 'pre truncate'}, JSON.stringify(model, null, 2)),
   ]);
 }
 

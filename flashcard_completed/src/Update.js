@@ -123,10 +123,13 @@ function update(msg, model) {
         [R.propEq('score', SCORES.GOOD), ({ rank }) => rank + 1],
         [R.propEq('score', SCORES.GREAT), ({ rank }) => rank + 2],
       ])({ score, rank: card.rank });
-      const updatedCards = R.map(
-        updateCards({ id, showAnswer: false, rank }),
-        cards,
-      );
+      const updatedCards = R.pipe(
+        R.map(updateCards({ id, showAnswer: false, rank })),
+        R.sortWith([
+          R.ascend(R.prop('rank')), 
+          R.descend(R.prop('id'))]
+        )
+      )(cards);
       return { ...model, cards: updatedCards };
     }
     case MSGS.NEW_CARD: {
@@ -139,7 +142,7 @@ function update(msg, model) {
         showAnswer: false,
         edit: true,
       };
-      const updatedCards = R.append(newCard, cards);
+      const updatedCards = R.prepend(newCard, cards);
       return { ...model, cards: updatedCards, nextId: id + 1 };
     }
     case MSGS.DELETE_CARD: {
