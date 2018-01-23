@@ -2,7 +2,12 @@ import * as R from 'ramda';
 import hh from 'hyperscript-helpers';
 import { h } from 'virtual-dom';
 
-import { locationInputMsg, removeLocationMsg, addLocationMsg } from './Update';
+import {
+  locationInputMsg,
+  removeLocationMsg,
+  addLocationMsg,
+  clearErrorMsg,
+} from './Update';
 
 const { div, h1, label, input, pre, form, button, ul, li, span, i } = hh(h);
 
@@ -56,9 +61,24 @@ function locations(dispatch, model) {
   return ul({ className: 'list pl0 ml0 ba b--light-silver br' }, locations);
 }
 
+function error(dispatch, model) {
+  if (!model.error) {
+    return null;
+  }
+  return div({ className: 'pa2 mv2 bg-red white relative' }, [
+    model.error,
+    i({
+      className:
+        'white absolute top-0 right-0 mt1 mr1 fa fa-remove pointer black-40',
+      onclick: () => dispatch(clearErrorMsg),
+    }),
+  ]);
+}
+
 function view(dispatch, model) {
   return div({ className: 'mw6 center' }, [
     h1({ className: 'f2 pv2 bb' }, ['Weather']),
+    error(dispatch, model),
     locationForm(dispatch, model),
     locations(dispatch, model),
     pre(JSON.stringify(model, null, 2)),

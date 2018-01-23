@@ -3,22 +3,16 @@ import createElement from 'virtual-dom/create-element';
 import axios from 'axios';
 
 function httpEffects(dispatch, command) {
-  if (!request) {
+  if (!command) {
     return;
   }
-  const { request, success, error } = command;
-  if (!success) {
-    return console.error('httpRequest without a success function');
-  }
-  if (!error) {
-    return console.error('httpRequest without a error function');
-  }
-  axios(httpRequest).then(
+  const { request, successMsg, errorMsg } = command;
+  axios(request).then(
     response => {
-      dispatch(success(response));
+      dispatch(successMsg(response));
     },
     err => {
-      dispatch(error(error));
+      dispatch(errorMsg(err.response.data));
     },
   );
 }
