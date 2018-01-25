@@ -1,8 +1,8 @@
 const initModel = {
   location: '',
   nextId: 0,
-  locations: [],
   error: null,
+  locations: [],
 };
 
 export default initModel;

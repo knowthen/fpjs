@@ -11,11 +11,10 @@ function weatherUrl(city) {
 const url = weatherUrl('Paris');
 
 const request = { url };
+
 const promise = axios(request);
 
-// const promise = axios({ url: 'http://knowthen.com/fp12' });
 promise.then(success, error);
-// axios(request).then(success, error);
 
 function success(response) {
   console.log(JSON.stringify(response.data, null, 2));

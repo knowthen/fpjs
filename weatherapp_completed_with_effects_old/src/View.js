@@ -2,10 +2,10 @@ import * as R from 'ramda';
 import hh from 'hyperscript-helpers';
 import { h } from 'virtual-dom';
 
-import { 
-  locationInputMsg, 
-  removeLocationMsg, 
-  addLocationMsg, 
+import {
+  locationInputMsg,
+  removeLocationMsg,
+  addLocationMsg,
   clearErrorMsg,
 } from './Update';
 
@@ -38,8 +38,8 @@ function cell(className, label, temp) {
   return div({ className }, [div({ className: 'f7 b' }, label), div({}, temp)]);
 }
 
-const location = R.curry((dispatch, loc) => {
-  const { name, temp, low, high, id } = loc;
+const Location = R.curry((dispatch, location) => {
+  const { name, temp, low, high } = location;
   return li(
     { className: 'pa3 bb b--light-silver flex justify-between relative' },
     [
@@ -50,14 +50,14 @@ const location = R.curry((dispatch, loc) => {
       i({
         className:
           'relative top--1 right--1 mt1 mr1 fa fa-remove pointer black-40',
-        onclick: () => dispatch(removeLocationMsg(id)),
+        onclick: () => dispatch(removeLocationMsg(location.id)),
       }),
     ],
   );
 });
 
 function locations(dispatch, model) {
-  const locations = R.map(location(dispatch), model.locations);
+  const locations = R.map(Location(dispatch), model.locations);
   return ul({ className: 'list pl0 ml0 ba b--light-silver br' }, locations);
 }
 
@@ -75,13 +75,13 @@ function error(dispatch, model) {
   ]);
 }
 
-
 function view(dispatch, model) {
   return div({ className: 'mw6 center' }, [
     h1({ className: 'f2 pv2 bb' }, ['Weather']),
     error(dispatch, model),
     locationForm(dispatch, model),
     locations(dispatch, model),
+    pre(JSON.stringify(model, null, 2)),
   ]);
 }
 

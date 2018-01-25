@@ -9,6 +9,14 @@ export const MSGS = {
   CLEAR_ERROR: 'CLEAR_ERROR',
 };
 
+const APPID = 'c679a2284718a3fc54d075ceb57a81ab';
+
+function weatherUrl(city) {
+  return `http://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
+    city,
+  )}&units=imperial&APPID=${APPID}`;
+}
+
 export function locationInputMsg(location) {
   return {
     type: MSGS.LOCATION_INPUT,
@@ -44,22 +52,6 @@ export const clearErrorMsg = {
   type: MSGS.CLEAR_ERROR,
 };
 
-const APPID = 'c679a2284718a3fc54d075ceb57a81ab';
-
-function weatherUrl(city) {
-  return `http://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
-    city,
-  )}&units=imperial&APPID=${APPID}`;
-}
-
-function httpCommand(request, successMsg, errorMsg) {
-  return {
-    request,
-    successMsg,
-    errorMsg,
-  };
-}
-
 function update(msg, model) {
   switch (msg.type) {
     case MSGS.LOCATION_INPUT: {
@@ -76,21 +68,24 @@ function update(msg, model) {
         high: '?',
       };
       const updatedLocations = R.prepend(newLocation, locations);
-      // const url = weatherUrl(location);
-      // const command = httpCommand({ url }, httpSuccessMsg(nextId));
-      return [
-        {
+      return [{
           ...model,
           location: '',
           locations: updatedLocations,
           nextId: nextId + 1,
         },
-        // command,
         {
           request: { url: weatherUrl(location) },
           successMsg: httpSuccessMsg(nextId),
-        },
+          errorMsg: httpErrorMsg,
+        }
       ];
+    }
+    case MSGS.REMOVE_LOCATION: {
+      const { id } = msg;
+      const { locations } = model;
+      const updatedLocations = R.reject(R.propEq('id', id), locations);
+      return { ...model, locations: updatedLocations };
     }
     case MSGS.HTTP_SUCCESS: {
       const { id, response } = msg;
@@ -100,8 +95,6 @@ function update(msg, model) {
         ['data', 'main'],
         response,
       );
-      // response.data.main || {};
-
       const updatedLocations = R.map(location => {
         if (location.id === id) {
           return {
@@ -121,12 +114,6 @@ function update(msg, model) {
     case MSGS.HTTP_ERROR: {
       const { error } = msg;
       return { ...model, error: error.message };
-    }
-    case MSGS.REMOVE_LOCATION: {
-      const { id } = msg;
-      const { locations } = model;
-      const updatedLocations = R.reject(R.propEq('id', id), locations);
-      return { ...model, locations: updatedLocations };
     }
     case MSGS.CLEAR_ERROR: {
       return { ...model, error: null };
