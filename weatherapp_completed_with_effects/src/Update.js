@@ -1,7 +1,5 @@
 import * as R from 'ramda';
 
-const API_KEY = 'c679a2284718a3fc54d075ceb57a81ab';
-
 export const MSGS = {
   LOCATION_INPUT: 'LOCATION_INPUT',
   ADD_LOCATION: 'ADD_LOCATION',
@@ -29,12 +27,11 @@ export function removeLocationMsg(id) {
   };
 }
 
-function httpSuccessMsg(response) {
-  return {
-    type: MSGS.HTTP_SUCCESS,
-    response,
-  };
-}
+const httpSuccessMsg = R.curry((id, response) => ({
+  type: MSGS.HTTP_SUCCESS,
+  id,
+  response,
+}));
 
 function httpErrorMsg(error) {
   return {
@@ -47,18 +44,20 @@ export const clearErrorMsg = {
   type: MSGS.CLEAR_ERROR,
 };
 
+const APPID = 'c679a2284718a3fc54d075ceb57a81ab';
+
+function weatherUrl(city) {
+  return `http://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
+    city,
+  )}&units=imperial&APPID=${APPID}`;
+}
+
 function httpCommand(request, successMsg, errorMsg) {
   return {
     request,
     successMsg,
     errorMsg,
   };
-}
-
-function apiUrl(q) {
-  return `http://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
-    q,
-  )}&units=imperial&APPID=${API_KEY}`;
 }
 
 function update(msg, model) {
@@ -68,38 +67,55 @@ function update(msg, model) {
       return { ...model, location };
     }
     case MSGS.ADD_LOCATION: {
-      const { location } = model;
-      const url = apiUrl(location);
-      const command = httpCommand(
-        { method: 'get', url },
-        httpSuccessMsg,
-        httpErrorMsg,
-      );
-      return [model, command];
+      const { nextId, location, locations } = model;
+      const newLocation = {
+        id: nextId,
+        name: location,
+        temp: '?',
+        low: '?',
+        high: '?',
+      };
+      const updatedLocations = R.prepend(newLocation, locations);
+      // const url = weatherUrl(location);
+      // const command = httpCommand({ url }, httpSuccessMsg(nextId));
+      return [
+        {
+          ...model,
+          location: '',
+          locations: updatedLocations,
+          nextId: nextId + 1,
+        },
+        // command,
+        {
+          request: { url: weatherUrl(location) },
+          successMsg: httpSuccessMsg(nextId),
+        },
+      ];
     }
     case MSGS.HTTP_SUCCESS: {
-      const { response } = msg;
-      const { location, locations, nextId } = model;
+      const { id, response } = msg;
+      const { locations } = model;
       const { temp, temp_min, temp_max } = R.pathOr(
         {},
         ['data', 'main'],
         response,
       );
+      // response.data.main || {};
 
-      const newLocation = {
-        id: nextId,
-        name: location,
-        temp: Math.round(temp),
-        low: Math.round(temp_min),
-        high: Math.round(temp_max),
-      };
-      const updatedLocations = R.prepend(newLocation, locations);
+      const updatedLocations = R.map(location => {
+        if (location.id === id) {
+          return {
+            ...location,
+            temp: Math.round(temp),
+            low: Math.round(temp_min),
+            high: Math.round(temp_max),
+          };
+        }
+        return location;
+      }, locations);
       return {
         ...model,
         locations: updatedLocations,
-        location: '',
-        nextId: nextId + 1,
-        error: null,
       };
     }
     case MSGS.HTTP_ERROR: {
