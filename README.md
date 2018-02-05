@@ -38,14 +38,14 @@ You'll learn how to create front end web applications in a Functional Programmin
 **“What frontend framework will I learn?”**  
 I could teach you Functional Programming using a popular frontend framework like React or Vuejs, but frameworks come and go, and the principles I'll teach you are timeless principles that transcend frameworks... So Instead, you'll learn functional programming by just using Modern JavaScript, and a few helper libraries.  The knowledge and skills you'll learn in this course can be used with the popular frameworks of today and tomorrow!
 
-**“I'm a backend developer, but I'd like to learn Functional Programming... Should I take this course?”**
+**“I'm a backend developer, but I'd like to learn Functional Programming... Should I take this course?”**  
 The knowledge and fundamental principles you'll learn in this course, can easily be translated to the backend. I'm teaching you Functional Programming for the frontend, because programming on the front end can be quite challenging and Functional Programming is a particularly good fit for the front end.  It's important to note, this course focuses on Modern JavaScript and doesn't use a front end framework, so you won't have to learn frontend technologies that you may never use.
 
 **“Can I write Functional Programs in JavaScript?”**
 **Yes, absolutely.** JavaScript allows you to program in many different styles, and using functional programming is an excellent choice. You'll start by learning Functional Programming techniques using modern JavaScript ( ES2018 ), then later you'll learn about the excellent Ramda JavaScript library. You may have heard the phrase **_"JavaScript, the good parts"_**.  When you're programming in a functional style, you're simply using the good parts of the language, and you'll naturally avoid the bad and confusing parts (like the *this* keyword ヽ(ಠ_ಠ)ノ).
 
 **“Isn’t Functional Programming just a small niche in Computer Science?”**  
-**This used to be true, but not anymore.**  For decades Object Oriented Programming was the dominant force in software development, but in the last few years Functional Programming has had huge growth, and it’s used in big companies like Facebook, Twitter and even Walmart.  But it’s not just the big companies that are using Functional Programming, small and medium sized companies all over the world are turning to Functional Programming.  
+**This used to be true, but not anymore.** For decades Object Oriented Programming was the dominant force in software development, but in the last few years Functional Programming has had huge growth, and it’s used in big companies like Facebook, Twitter and even Walmart.  But it’s not just the big companies that are using Functional Programming, small and medium sized companies all over the world are turning to Functional Programming.  
 In December 2017, Forrester research released a study titled “The New Dawn Of Functional Programming”, which asserts “Functional Programming is beginning to hit the mainstage… the software development world is outgrowing stateful, object-oriented development”.  
 It always **makes sense** to learn upward **trending technologies**, and Functional Programming is an excellent choice for this reason and many more.
 
@@ -54,7 +54,7 @@ It always **makes sense** to learn upward **trending technologies**, and Functio
 The truth is, you don’t need to be a Math genius to understand Functional Programming.  The essence of Functional Programming, has little to do with Math, which you’ll see in this course.
 
 **“Won’t I have to learn a whole new vocabulary to understand Functional Programming?”**  
-**No!**I won’t bombard you with unneeded technical Jargon, in fact I avoid it as much as possible, and when I do use new Functional Programming vocabulary, it’s usually just to associate a name, to something you already learned with plain old spoken english.
+**No!** I won’t bombard you with unneeded technical Jargon, in fact I avoid it as much as possible, and when I do use new Functional Programming vocabulary, it’s usually just to associate a name, to something you already learned with plain old spoken english.
 
 **“Will the knowledge I gain in this course be obsolete in a year or two, just like my Angular 1 knowledge is?”**  
 **No!** What **you’ll learn** in this course will be **relevant** and **useful** for **years** and **probably decades**.  
@@ -65,7 +65,8 @@ Because, I’m not teaching you functional programming in the context of particu
 The most difficult to find and fix bugs, are related to code that allows Side Effects (talking to servers, state changes etc). Functional Programming puts a significant emphasis on Eliminating and Controlling Side Effects... So, it would make sense that eliminating Side Effects where possible, and tightly controlling side effects when they are needed would result in fewer complicated bugs.
 
 **“You say Functional Programming is simple, but I’ve tried Functional Programming and it was hard!?”**  
-**Ah, I didn’t say it was easy, I said it was simple.** Writing simple code, isn’t easy, often it’s difficult. But sophisticated software built with a simple codebase is a **thing of beauty**, and it’s **totally worth it**.  
+**Ah, I didn’t say it was easy, I said it was simple.** Writing simple code, isn’t easy, often it’s difficult. But sophisticated software built with a simple codebase is a **thing of beauty**, and it’s **totally worth it**.
+
 If you know and love Object Oriented Programming, you may be in for a challenge. Much of what you know about programming, must be re-evaluated and often disregarded. I suspect, it might be easier for a new programmer to learn functional programming vs an experienced Object Oriented Programmer, because Functional Programming is so different from Object Oriented Programming… But again, **it’s totally worth it** :)
 
 **“I don't understand some of the things your talking about like 'side effects' and 'pure functions'?”**  
