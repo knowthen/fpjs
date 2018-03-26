@@ -5,7 +5,7 @@
 3. [CD](<https://en.wikipedia.org/wiki/Cd_(command)>) into a directory you'd like to put your code in, then clone the courses companion repo with the following command
 
 ```
-git clone github.com/knowthen/fpjs
+git clone git@github.com:knowthen/fpjs.git
 ```
 
 ## Using the counter directory
