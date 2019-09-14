@@ -23,3 +23,6 @@ function success(response) {
 function error(err) {
   console.log(JSON.stringify(err.response.data, null, 2));
 }
+
+
+var student = "Eder is #1"
