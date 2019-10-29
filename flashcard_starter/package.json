@@ -20,6 +20,6 @@
     "webpack-dev-server": "^2.9.4"
   },
   "dependencies": {
-    "serve": "^6.4.8"
+    "serve": "^7.1.3"
   }
 }
