@@ -23,6 +23,6 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "serve": "^6.4.9"
+    "serve": "^10.1.2"
   }
 }
